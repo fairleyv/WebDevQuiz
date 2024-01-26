@@ -41,3 +41,8 @@ footer button{
     box-shadow:2px 4px darkBlue;
 
 }
+
+.border-top {
+    border-top: lightgrey 2px solid;
+    color: lightgrey;
+}
