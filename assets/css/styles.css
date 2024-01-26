@@ -1,0 +1,43 @@
+main {
+    display: flex;
+    justify-content: center;
+
+}
+
+#quizContainer {
+    text-align: center;
+    width: 75%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+footer button{
+    margin-top: 1rem;
+    background-color: navy;
+    color: white;
+    width: 15rem;
+    height: 2.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+#answerButtons {
+    display:grid;
+}
+
+#answerButtons button {
+    justify-self:center;
+    background-color: blue;
+    color: white;
+    margin: 20px 0px 20px 0px;
+    width: 20rem;
+    height: 3.5rem;
+    border-radius: 30px;
+    box-shadow:2px 4px darkBlue;
+
+}
