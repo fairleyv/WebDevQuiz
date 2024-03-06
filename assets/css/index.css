@@ -4,17 +4,19 @@ main {
 
 }
 
-#quizContainer {
-    text-align: center;
-    width: 75%;
+header {
+    display: flex;
+    justify-content:space-between;
+    margin-right: 40px;
 }
+
 
 footer {
     display: flex;
     justify-content: center;
 }
 
-footer button{
+footer button {
     margin-top: 1rem;
     background-color: navy;
     color: white;
@@ -22,6 +24,15 @@ footer button{
     height: 2.5rem;
 }
 
+.highScore {
+    display: flex;
+    justify-content: center;
+}
+
+.border-top {
+    border-top: lightgrey 2px solid;
+    color: lightgrey;
+}
 .hidden {
     display: none;
 }
@@ -39,5 +50,10 @@ footer button{
     height: 3.5rem;
     border-radius: 30px;
     box-shadow:2px 4px darkBlue;
+    
+}
 
+#quizContainer {
+    text-align: center;
+    width: 75%;
 }
