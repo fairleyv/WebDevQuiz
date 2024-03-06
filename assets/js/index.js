@@ -5,6 +5,8 @@ let intro = document.getElementById('introText');
 let timer = document.getElementById('timer')
 let timeRemaining = 75;
 let qNum = 2;
+let highScore = [];
+let lowestScore = 100;
 
 let answer1 = document.createElement('button');
 let answer2 = document.createElement('button');
@@ -25,7 +27,7 @@ function startTime() {
         timer.textContent = 0;
         clearInterval(timerInterval);
       }
-
+    //   Stops timer when quiz is finished. 
       if (testOver == true) {
         clearInterval(timerInterval);
         timeRemaining ++;
@@ -91,25 +93,32 @@ function handleClickEvent(event) {
         answer4.value = 'correct';
     } else if (qNum == 6) {
         testOver = true;
+        answer1.setAttribute('class','hidden');
+        answer2.setAttribute('class','hidden');
+        answer3.setAttribute('class','hidden');
+        answer4.setAttribute('class','hidden');
+
         question.textContent = 'All Done!!!';
         intro.removeAttribute('class', 'hidden');
         intro.textContent = 'Your final score is ' + timeRemaining + '.';
-        let highScoreContainer = document.createElement('div');
+        let highScoreForm = document.getElementById('highScoreForm');
         let initialsText = document.createElement('p');
         let initialsInput = document.createElement('input');
         let submitHighScore = document.createElement('button');
-        highScoreContainer.setAttribute('class', 'highScore')
-        initialsInput.setAttribute('type', 'text')
+        highScoreForm.setAttribute('class', 'highScore')
+        initialsInput.setAttribute('placeholder', 'Initials')
+        initialsInput.setAttribute('id', 'formData')
         initialsText.textContent = 'Enter Initials Here: ';
         submitHighScore.textContent = 'Submit';
-        highScoreContainer.append(initialsText);
-        highScoreContainer.append(initialsInput);
-        highScoreContainer.append(submitHighScore);
-
-        answer1.setAttribute('class', 'hidden');
-        answer2.setAttribute('class', 'hidden');
-        answer3.setAttribute('class', 'hidden');
-        answer4.setAttribute('class', 'hidden');
+        highScoreForm.append(initialsText);
+        highScoreForm.append(initialsInput);
+        highScoreForm.append(submitHighScore);
+        submitHighScore.addEventListener("click", saveHighScore)
+        let homepage = document.getElementById('homepage');
+        let restart = document.createElement('button');
+        restart.textContent = 'Restart Quiz';
+        restart.addEventListener('click', homebutton);
+        homepage.append(restart);
 
     } 
     // Increment questionNum
@@ -150,6 +159,55 @@ function startQuiz() {
     answer2.addEventListener('click', handleClickEvent);
     answer3.addEventListener('click', handleClickEvent);
     answer4.addEventListener('click', handleClickEvent);
+    
+    qNum = 2;
+    timeRemaining = 75; 
 
     startTime();
+
+}
+
+function saveHighScore(event) {
+    event.preventDefault();
+
+    initials = document.getElementById('formData')
+    if (localStorage.getItem('highScore') == null) {
+        localStorage.setItem('highScore', []);
+    } else {
+        highScore = JSON.parse(localStorage.getItem('highScore'));
+    }
+
+    highScore.push([{
+            'initials': initials.value,
+            'highscore': timeRemaining,
+    }]);
+    
+    intro.textContent = "Your Highscore has been saved!!!";
+ 
+    for (each of highScore) {
+        if (lowestScore > each[0].highscore ) {
+            lowestScore = each[0].highscore;
+        }
+    }
+
+    if (highScore.length > 10) {
+        for (let i = 0; i < highScore.length; i++) {
+            if (highScore[i][0].highscore == lowestScore) {
+                let trash = highScore.splice(i,1);
+                console.log(trash);
+                break;
+            }
+        }
+    }
+
+    localStorage.setItem('highScore', JSON.stringify(highScore));
+
+    let highScoreForm = document.getElementById('highScoreForm');
+    highScoreForm.setAttribute('class', 'hidden');
+
+
+}
+
+function homebutton () {
+    document.location = './index.html'
 }

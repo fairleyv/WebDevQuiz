@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <title>WebDevQuiz</title>
 </head>
 
 <body>
     <header>
-        <h4><a href="#">View High Scores</a></h4>
+        <h4><a href="./scores.html">View High Scores</a></h4>
         <h4 id="timer"></h4>
     </header>
     <main>
@@ -20,15 +20,17 @@
                 10 questions and 75 seconds to complete them. If the user picks an answer incorrectly, 10 seconds will be
                 removed from the total time to complete the assessment. The final score will be equal to the remaining time
                 in the quiz. Click the button below to begin.</p>
+            <form id="highScoreForm"></form>
                 <div id="answerButtons">
                 </div>
+                <div id="homepage"></div>
         </container>
         </main>
     <footer id="footer">
         <button id="starterButton" onclick="startQuiz()">Start Assessment</button>
         <h3 id="chosen"></h3>
     </footer>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/index.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,31 @@
+#highscores {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#initials {
+    margin-left: 25%;
+    border: 3px slategray solid;
+    width: 10rem;
+    padding: 0 20px;
+
+
+
+}
+
+#scores {
+    margin-right: 25%;
+    border: 3px slategray solid;
+    width: 10rem;
+    padding: 0 20px;
+}
+
+#heading {
+    color: white;
+    text-align: center;
+    background-color:navy;
+    box-shadow: inset darkblue;
+    height: 5rem;
+    padding-top: 20px
+}
